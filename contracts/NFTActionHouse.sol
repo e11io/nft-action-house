@@ -1,10 +1,8 @@
 pragma solidity ^0.4.23;
 
-import './NFTActionHouseInterface.sol';
+contract NFTActionHouse {
 
-contract NFTActionHouse is NFTActionHouseInterface {
-
-  constructor() {
+  constructor() public {
 
   }
 }
