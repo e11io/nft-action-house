@@ -4,7 +4,8 @@
   "description": "NFT Action House",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "rm -rf build && truffle compile",
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,5 @@
   "bugs": {
     "url": "https://github.com/e11io/nft-action-house/issues"
   },
-  "homepage": "https://github.com/e11io/nft-action-house#readme",
-  "dependencies": {
-    "openzeppelin-solidity": "^1.10.0",
-    "truffle": "^4.1.13"
-  }
+  "homepage": "https://github.com/e11io/nft-action-house#readme"
 }
