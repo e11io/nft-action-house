@@ -30,15 +30,15 @@ contract('NFTActionHouse', (accounts) => {
 
   it.skip('Should add NFT token', async () => {
     const tokenId = 1;
-    const tokenPrice = 1;
-    await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice * ether, { from: Bob });
+    const tokenPrice = 1 * ether;
+    await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice, { from: Bob });
   });
 
   it.skip('Should not add NFT token if its not the owner of it', async () => {
     const tokenId = 1;
-    const tokenPrice = 1;
+    const tokenPrice = 1 * ether;
     await assertRevert(async () => {
-      await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice * ether, { from: Carol });
+      await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice, { from: Carol });
     });
   });
 
@@ -46,21 +46,21 @@ contract('NFTActionHouse', (accounts) => {
 
     beforeEach(async () => {
       const tokenId = 1;
-      const tokenPrice = 1;
-      await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice * ether, { from: Bob });
+      const tokenPrice = 1 * ether;
+      await actionHouseNFT.addNFT(sampleNFT.address, tokenId, tokenPrice, { from: Bob });
     });
 
     it.skip('Should edit NFT', async () => {
       const tokenId = 1;
       const tokenPrice = 2;
-      await actionHouseNFT.editNFT(sampleNFT.address, tokenId, tokenPrice * ether, { from: Bob });
+      await actionHouseNFT.editNFT(sampleNFT.address, tokenId, tokenPrice, { from: Bob });
     });
 
     it.skip('Should not be able to edit NFT if its not the owner of it', async () => {
       const tokenId = 1;
       const tokenPrice = 2;
       await assertRevert(async () => {
-        await actionHouseNFT.editNFT(sampleNFT.address, tokenId, tokenPrice * ether, { from: Carol });
+        await actionHouseNFT.editNFT(sampleNFT.address, tokenId, tokenPrice, { from: Carol });
       });
     });
 
@@ -77,15 +77,22 @@ contract('NFTActionHouse', (accounts) => {
     });
 
     it.skip('Should get tokens offered by user', async () => {
-
+      const tokenId = 1;
+      const tokensOfferedByUser = await actionHouseNFT.offeredByUser(Bob);
+      assert.equal([tokenId].toString(), tokensOfferedByUser.toString(), 'Tokens offered by user are wrong');
     });
 
     it.skip('Should get who is offering the token', async () => {
-      // for offeredBy function
+      const tokenId = 1;
+      const offeredBy = await actionHouseNFT.offeredBy(sampleNFT.address, tokenId);
+      assert.equal(Bob, offeredBy, 'The owner should be Bob, dude wtf.');
     });
 
     it.skip('Should get the token price', async () => {
-
+      const tokenId = 1;
+      const tokenPrice = 1 * ether;
+      const tokenPriceOnContract = await actionHouseNFT.tokenPrice(sampleNFT.address, tokenId);
+      assert.equal(tokenId, tokenPriceOnContract, 'The price should be 1 ether, dude wtf.');
     });
 
     it.skip('Should buy NFT', async () => {
@@ -107,7 +114,7 @@ contract('NFTActionHouse', (accounts) => {
     context('With bought NFTs', async () => {
       beforeEach(async () => {
         const tokenId = 1;
-        const tokenPrice = 1;
+        const tokenPrice = 1 * ether;
         await actionHouseNFT.buyNFT(sampleNFT.address, tokenId, { from: David, value: tokenPrice });
       });
 
