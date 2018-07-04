@@ -1,3 +1,5 @@
+pragma solidity ^0.4.23;
+
 interface NFTActionHouseInterface {
 
   function addNFT(address _nftContract, uint256 _nft, uint256 _price); // Must set approval on _nftContract
