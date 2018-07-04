@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/e11io/nft-action-house/issues"
   },
-  "homepage": "https://github.com/e11io/nft-action-house#readme"
+  "homepage": "https://github.com/e11io/nft-action-house#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^1.10.0"
+  }
 }

@@ -1,12 +1,12 @@
 const NFTActionHouse = artifacts.require('NFTActionHouse');
+const SampleNFT = artifacts.require('SampleNFT');
 
 module.exports = function(deployer) {
 
-  deployer.deploy([
-    NFTActionHouse,
-    // TODO add mock NFT contract
-  ]).then(async () => {
-    let nftActionHouse = await NFTActionHouse.deployed();
+  deployer.deploy(NFTActionHouse).then(() => {
+    return deployer.deploy(SampleNFT, 'Sample', 'SNFT').then(() => {
+      console.log('Deployed !');
+    });
   });
 
 };
