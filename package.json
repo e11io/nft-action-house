@@ -1,0 +1,23 @@
+{
+  "name": "nft-action-house",
+  "version": "1.0.0",
+  "description": "NFT Action House",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e11io/nft-action-house.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e11io/nft-action-house/issues"
+  },
+  "homepage": "https://github.com/e11io/nft-action-house#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^1.10.0",
+    "truffle": "^4.1.13"
+  }
+}
