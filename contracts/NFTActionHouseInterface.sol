@@ -5,7 +5,7 @@ interface NFTActionHouseInterface {
   function addNFT(address _nftContract, uint256 _nft, uint256 _price) external; // Must set approval on _nftContract
   function editNFT(address _nftContract, uint256 _nft, uint256 _price) external;
   function removeNFT(address _nftContract, uint256 _nft) external;
-  function buyNFT(address _nftContract, uint256 _nft, uint256 _price) external payable;
+  function buyNFT(address _nftContract, uint256 _nft) external payable;
   function withdrawFunds() external;
 
   function totalSold() external view returns(uint256 _wei);
