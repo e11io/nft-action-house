@@ -96,19 +96,17 @@ contract('NFTActionHouse', (accounts) => {
     });
 
     it.skip('Should buy NFT', async () => {
-
+      const tokenId = 1;
+      const tokenPrice = 1 * ether;
+      await actionHouseNFT.buyNFT(sampleNFT.address, tokenId, { from: David, value: tokenPrice });
     });
 
     it.skip('Should not be able to buy it with less wei sended than actual value of NFT', async () => {
-
-    });
-
-    it.skip('Should get the NFTs offered by a user', async () => {
-
-    });
-
-    it.skip('Should get who is offering an NFT', async () => {
-
+      const tokenId = 1;
+      const tokenPrice = 0.5 * ether;
+      await assertRevert(async () => {
+        await actionHouseNFT.buyNFT(sampleNFT.address, tokenId, { from: David, value: tokenPrice });
+      });
     });
 
     context('With bought NFTs', async () => {
@@ -119,19 +117,21 @@ contract('NFTActionHouse', (accounts) => {
       });
 
       it.skip('Should be able to withdraw funds', async () => {
-
+        const actualBobBalance = await web3.eth.getBalance(Bob);
+        await actionHouseNFT.withdrawFunds();
+        const newBobBalance = await web3.eth.getBalance(Bob);
+        assert.equal(actualBobBalance.plus(1).equals(newBobBalance), true, 'Bob didnt whitdraw the funds he should have.');
       });
 
       it.skip('Should keep track of the total amount of wei sold on aciton house', async () => {
-
+        const weiSold = await actionHouseNFT.totalSold();
+        assert.equal(weiSold, 1, 'Total amount of wei sold its not what its supposed to be. Get ur game on, bruh.');
       });
 
       it.skip('Should keep track of amount of wei raised by a user', async () => {
-
+        const weiRaisedByUser = await actionHouseNFT.raisedByUser(Bob);
+        assert.equal(weiRaisedByUser, 1, 'The wei raised by user its not what its supposed to be.');
       });
-
     });
-
   });
-
 });
